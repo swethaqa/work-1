@@ -1,0 +1,49 @@
+package swetha.test.day1;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Basics1 {
+
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+		 System.setProperty("webdriver.chrome.driver", "C:/ProgramData/jar/drivers/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	
+		
+		// Three type of timeouts
+		// sync your script
+		
+		// 3 types of timeout
+		// Java Timeout 
+		Thread.currentThread().sleep(5000); // doesnt care anything just 5 sec break;
+		
+		// implicit wait
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); // once
+		
+		// Explicit wait Element wait
+		
+		
+		/**
+		 * Opening Google Page and providing text as Selenium
+		 */
+		driver.get("http://www.google.com");
+		driver.findElement(By.xpath("//input[@name='q']")).sendKeys("selenium");
+		driver.findElement(By.xpath("//button[@name='btnG']")).click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("Selenium - Web Browser Automation"))));
+		
+        driver.findElement(By.linkText("Selenium - Web Browser Automation")).click();
+        driver.findElement(By.xpath("//a[@title='Get Selenium']")).click();
+        driver.findElements(By.xpath("//div[@id='mainContent']//a[contains(text(),'Download')]")).get(0).click();-->Relative path
+	
+	}
+
+}
